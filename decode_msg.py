@@ -40,14 +40,23 @@ def ex_msg(af):
       help()
     else:
         print ("Please wait...")
+        # Opening and reading audio file
         waveaudio = wave.open(af, mode='rb')
         wave_frames = waveaudio.readframes(waveaudio.getnframes())
         frame_bytes = bytearray(list(wave_frames))
+        
+        #Extaracting LSB bit of each byte
         extracted = [frame_bytes[i] & 1 for i in range(len(frame_bytes))]
+        
+        #Creating chunks of 8bits from the extracted bits
         chunked_extracted = [extracted[i:i+8] for i in range(0, len(extracted), 8)]
+        
+        # Converting the chunks to characters 
         binary_strings = map(lambda x: "".join(map(str, x)), chunked_extracted)
         int_list = map(lambda x: int(x, 2), binary_strings)
         char_list = map(chr, int_list)
+        
+        # Joining the characters to get the string.
         string = "".join(char_list)
         msg = string.split("###")[0]
         
