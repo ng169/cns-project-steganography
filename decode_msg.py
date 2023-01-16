@@ -39,7 +39,7 @@ def ex_msg(af):
     if not all_args_entered:
       help()
     else:
-        print ("Please wait...")
+        print ("Please wait...Decoding message...")
         # Opening and reading audio file
         waveaudio = wave.open(af, mode='rb')
         wave_frames = waveaudio.readframes(waveaudio.getnframes())
@@ -65,7 +65,7 @@ def ex_msg(af):
         else:
           print("Your Secret Message is: \033[1;91m"+msg+"\033[0m")
         waveaudio.close()
-cls()
+# cls()
 banner()
 try:
   ex_msg(af)

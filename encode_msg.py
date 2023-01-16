@@ -45,7 +45,7 @@ def enc_audio(af,string,output):
   if not all_args_entered:
     help()
   else:
-    print ("Please wait...")
+    print ("Please wait...encoding...")
 
     # Open wave audio file and read frames
     waveaudio = wave.open(af, mode='rb')
@@ -75,8 +75,8 @@ def enc_audio(af,string,output):
     waveaudio.close()
 
     print ("Done...")
+    print ("Embedded the secret message in "+output)
     
-cls()
 banner()
 try:
   enc_audio(af, string, output)
